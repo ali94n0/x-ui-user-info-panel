@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 
 export default function Home() {
 	const [server, setServer] = useState("germany");
@@ -40,7 +39,7 @@ export default function Home() {
 				setLoading(false)
 			}
 		} catch (error) {
-			toast.error(error?.message)
+			alert(error?.message)
 			setLoading(false)
 		}
 	};
