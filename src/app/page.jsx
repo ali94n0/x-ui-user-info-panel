@@ -26,13 +26,7 @@ export default function Home() {
 			if (response.ok) {
 				setLoading(false)
 				const data = await response.json();
-				router.push(
-					{
-
-						pathname: "/result",
-						query:`total=${data.total}&upload=${data.upload}&download=${data.download}&expireTime=${new Date(data.expireTime).toLocaleDateString("fa-ir")}&status=${data.status}&userId=${data.userId}`}
-					
-				);
+				router.push(`/result?total=${data.total}&upload=${data.upload}&download=${data.download}&expireTime=${new Date(data.expireTime).toLocaleDateString("fa-ir")}&status=${data.status}&userId=${data.userId}`);
 				
 			} else {
 				alert("به پشتیبانی پیام دهید");
