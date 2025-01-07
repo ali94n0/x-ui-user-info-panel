@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export default function Home() {
-	const [server, setServer] = useState("germany");
+	const [server, setServer] = useState(null);
 	const [email, setEmail] = useState("");
 	const [loading,setLoading] = useState(false)
 	const router = useRouter();

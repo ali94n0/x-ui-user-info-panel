@@ -73,8 +73,8 @@ export async function POST(req) {
 		const download = parseFloat(userData.obj.down || 0);
 		const total = parseFloat(userData.obj.total || 0);
 		const expireTime = userData.obj.expiryTime || 0;
-		const status = userData.obj.enable || "Unknown";
-		const userId = userData.obj.email || "Unknown";
+		const status = userData.obj?.enable;
+		const userId = userData.obj?.email;
 
 		return NextResponse.json({
 			total,
