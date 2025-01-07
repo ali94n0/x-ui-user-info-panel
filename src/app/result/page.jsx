@@ -16,7 +16,7 @@ export default function ResultPage() {
 
     const statusObj = {
         true: { label: "فعال", class: "bg-success" },
-        false: { label: "غیرقعال", class: "bg-error" },
+        false: { label: "غیرفعال", class: "bg-error" },
         Unknown:{label:"نامشخص",class:"bg-warning"}
 }
 
