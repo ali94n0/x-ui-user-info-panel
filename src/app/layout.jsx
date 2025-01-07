@@ -1,4 +1,4 @@
-
+import { Toaster } from "react-hot-toast";
 import vazirFont from "@/constants/localFont";
 import "../style/globals.css";
 import Header from "@/components/Header";
@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
 			
 			<body className={`font-sans ${vazirFont.variable} min-h-screen `} >
 				<Header/>
+				<Toaster />
 
 				<div>{children}</div>
 				<Footer/>

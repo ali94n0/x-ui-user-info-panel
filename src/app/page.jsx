@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function Home() {
 	const [server, setServer] = useState("germany");
@@ -29,11 +30,11 @@ export default function Home() {
 				router.push(`/result?total=${data.total}&upload=${data.upload}&download=${data.download}&expireTime=${new Date(data.expireTime).toLocaleDateString("fa-ir")}&status=${data.status}&userId=${data.userId}`);
 				
 			} else {
-				alert("به پشتیبانی پیام دهید");
+				toast.error("به پشتیبانی پیام دهید");
 				setLoading(false)
 			}
 		} catch (error) {
-			alert(error?.message)
+			toast.error(error?.message)
 			setLoading(false)
 		}
 	};
