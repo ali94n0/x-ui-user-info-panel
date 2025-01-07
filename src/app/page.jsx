@@ -74,7 +74,7 @@ export default function Home() {
 								required
 								className="p-3 rounded-lg text-secondary-100 "
 					/>
-				{loading ? <p className="text-md text-secondary-600 flex justify-center">در حال دریافت اطلاعات ...</p> : <button className="w-full rounded-lg bg-primary-800 text-white text-xl font-bold p-2" type="submit" disabled={!email}>دریافت اطلاعات</button>}
+				{loading ? <p className="text-md text-secondary-600 flex justify-center">در حال دریافت اطلاعات ...</p> : <button className="w-full rounded-lg bg-primary-800 text-white text-xl font-bold p-2" type="submit" disabled={!email || !server}>دریافت اطلاعات</button>}
 				</div>
 			</form></div>
 			</div>
