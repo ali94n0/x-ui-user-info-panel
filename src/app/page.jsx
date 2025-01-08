@@ -44,25 +44,25 @@ export default function Home() {
 			<div className="flex justify-center w-full items-center">
 				<div className="flex flex-col w-full p-2 gap-y-4">
 					<h1 className=" p-2 mt-8 text-secondary-800 text-xl font-bold">سرور خود را انتخاب کنید.</h1>
-			<form onSubmit={handleSubmit} className="flex flex-col gap-y-4">
-				<div className="flex gap-x-8 p-2 ">
-					<label className="flex gap-x-2 items-center flex-1 border border-secondary-500 rounded-lg p-4 shadow-md shadow-secondary-300 text-secondary-700 font-bold">
+			<form onSubmit={handleSubmit} className="flex flex-col gap-y-2">
+				<div className="flex gap-x-4 p-2 ">
+					<label className="flex gap-x-2 items-center justify-center flex-1 border border-secondary-500 rounded-lg px-2 py-4 shadow-md shadow-secondary-300 text-secondary-700 font-bold text-sm">
 						<input
 							type="radio"
 							value="finland"
 							checked={server === "finland"}
 							onChange={() => setServer("finland")}
 						/>
-						Vip1 - فنلاند 🇫🇮
+						Vip1 - فنلاند<span className="mr-2">🇫🇮</span>
 					</label>
-					<label className="flex gap-x-2 items-center flex-1 border border-secondary-500 rounded-lg p-4 shadow-md shadow-secondary-300 text-secondary-700 font-bold">
+					<label className="flex gap-x-2 items-center justify-center flex-1 border border-secondary-500 rounded-lg px-2 py-4 shadow-md shadow-secondary-300 text-secondary-700 font-bold text-sm">
 						<input
 							type="radio"
 							value="germany"
 							checked={server === "germany"}
 							onChange={() => setServer("germany")}
 						/>
-						Vip7 - المان 🇩🇪
+						Vip7 - المان<span className="mr-2">🇩🇪</span>
 					</label>
 				</div>
 				<div className="flex w-full flex-col gap-y-4 mt-4 p-2">
@@ -72,7 +72,7 @@ export default function Home() {
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 								required
-								className="p-3 rounded-lg text-secondary-100 "
+								className="p-3 rounded-lg text-secondary-100 text-sm"
 					/>
 				{loading ? <p className="text-md text-secondary-600 flex justify-center">در حال دریافت اطلاعات ...</p> : <button className="w-full rounded-lg bg-primary-800 text-white text-xl font-bold p-2" type="submit" disabled={!email || !server}>دریافت اطلاعات</button>}
 				</div>
