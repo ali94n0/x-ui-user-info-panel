@@ -15,9 +15,9 @@ export default function ResultPage() {
     const router = useRouter()
 
     const statusObj = {
-        true: { label: "فعال", class: "bg-success" },
-        false: { label: "غیرفعال", class: "bg-error" },
-        Unknown:{label:"نامشخص",class:"bg-warning"}
+        true: { label: "فعال", costomClass: "bg-success" },
+        false: { label: "غیرفعال", costomClass: "bg-error" },
+        Unknown:{label:"نامشخص",costomClass:"bg-warning"}
 }
 
     return (
@@ -31,15 +31,15 @@ export default function ResultPage() {
             <div className="mt-4 w-full p-4 flex flex-col gap-y-2">
             <h1 className='text-secondary-800 text-xl font-bold mb-2'>اطلاعات کاربر</h1>
             <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>کد اشتراک: {userId}</p>
-                    <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>وضعیت: <span className={`rounded-xl px-2 py-0.5 text-white ${statusObj[status].class}`}>
+                    <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>وضعیت: <span className={`rounded-xl px-2 py-0.5 text-white ${statusObj[status].costomClass}`}>
                     {statusObj[status].label}
                     </span></p>
             <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>حجم اپلود: {upload} GB</p>
             <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>حجم دانلود: {download} GB</p>
-            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>حجم کل مصرف شده: {total} GB</p>
-            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>حجم کل اشتراک: {totalLimit} GB</p>
-            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>حجم باقیمانده: {(totalLimit - total).toFixed(2)} GB</p>
-            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-secondary-600 text-md '>تاریخ انقضا: {expireTime}</p>
+            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-error/80 text-md '>حجم کل مصرف شده: {total} GB</p>
+            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-warning/80 text-md '>حجم کل اشتراک: {totalLimit} GB</p>
+            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-success/80 text-md '>حجم باقیمانده: {(totalLimit - total).toFixed(2)} GB</p>
+            <p className=' border border-secondary-400 rounded-lg shadow-md shadow-secondary-300 p-2 text-primary-800 text-md '>تاریخ انقضا: {expireTime}</p>
         </div>
             </div>
             </div>

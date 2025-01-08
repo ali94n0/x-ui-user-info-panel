@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
 		<html
 			lang="fa"
 			dir="rtl"
-			class="dark-mode"
+			className="dark-mode"
 		>
 			
 			<body className={`font-sans ${vazirFont.variable} min-h-screen `} >
