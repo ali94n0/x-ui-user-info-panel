@@ -68,7 +68,7 @@ export default function Home() {
 				<div className="flex w-full flex-col gap-y-4 mt-4 p-2">
 					<input
 						type="text"
-						placeholder="کد اشتراک ۴ رقمی خود را وارد کنید..."
+						placeholder="کد اشتراک ۴ رقمی خود را وارد کنید... (به انگلیسی)"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 								required
