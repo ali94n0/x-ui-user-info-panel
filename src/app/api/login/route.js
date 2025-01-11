@@ -8,7 +8,7 @@ export async function POST(req) {
 		germany: {
 			username: "ali94n0",
 			password: "008110ali",
-			url: "http://vip7-tu1.servicedeutsch.com:2096",
+			url: "http://vip7-lb1.servicedeutsch.com:2096",
 		},
 		finland: {
 			username: "ali94n0",
