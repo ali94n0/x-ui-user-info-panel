@@ -8,12 +8,12 @@ export async function POST(req) {
 		germany: {
 			username: "ali94n0",
 			password: "008110ali",
-			url: "http://vip7-lb1.servicedeutsch.com:2096",
+			url: "http://panel-vip7.servicedeutsch.com:2096",
 		},
 		finland: {
 			username: "ali94n0",
 			password: "008110ali",
-			url: "http://vip1-tu1.servicedeutsch.com:2096",
+			url: "http://panel-vip1.servicedeutsch.com:2096",
 		},
 	};
 
