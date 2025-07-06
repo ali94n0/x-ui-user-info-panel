@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const { server, email } = await req.json();
+  let cookies = "";
 
   // اطلاعات سرورهای مختلف
   const serverCredentials = {
@@ -36,10 +37,12 @@ export async function POST(req) {
       },
       body: JSON.stringify({ username, password }),
     });
-    // استخراج کوکی از Header
-    const cookies = loginResponse1.headers.get("set-cookie");
+    const data1 = await loginResponse1.json();
 
-    if (!loginResponse1.ok) {
+    // استخراج کوکی از Header
+    cookies = loginResponse1.headers.get("set-cookie");
+
+    if (!data1.success) {
       const loginResponse2 = await fetch(`${url2}/login`, {
         method: "POST",
         headers: {
@@ -47,9 +50,13 @@ export async function POST(req) {
         },
         body: JSON.stringify({ username, password }),
       });
+
+      const data2 = await loginResponse2.json();
+
       // استخراج کوکی از Header
-      const cookies = loginResponse2.headers.get("set-cookie");
-      if (!loginResponse2.ok) {
+      cookies = loginResponse2.headers.get("set-cookie");
+
+      if (!data2.success) {
         return NextResponse.json({ error: "Login failed" }, { status: 500 });
       }
     }
@@ -63,21 +70,29 @@ export async function POST(req) {
 
     // ارسال کوکی به مرورگر
     const response = NextResponse.json({ message: "Login successful" });
-    response.headers.set("Set-Cookie", cookies.split(",")[1]); // ذخیره کوکی در مرورگر
+    const newCookie = cookies
+      .split(",") // تقسیم بر اساس کوکی‌ها
+      .map((s) => s.trim()) // حذف فاصله اضافی
+      .filter((s) => s.startsWith("3x-ui=")) // فقط کوکی‌های 3x-ui
+      .map((s) => s.split(";")[0]) // فقط قسمت 3x-ui=... را نگه‌دار
+      .pop(); // آخرین مقدار را بگیر
+
+    response.headers.set("Set-Cookie", newCookie); // ذخیره کوکی در مرورگر
 
     // ارسال درخواست برای دریافت اطلاعات کاربر
-    const userResponse = await fetch(
-      `${
-        loginResponse1.ok ? url1 : url2
-      }/panel/api/inbounds/getClientTraffics/${email}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Cookie: cookies.split(",")[1], // ارسال کوکی برای احراز هویت
-        },
-      }
-    );
+    const path = `${
+      data1.success ? url1 : url2
+    }/panel/api/inbounds/getClientTraffics/${email}`;
+
+    const userResponse = await fetch(path, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: newCookie, // ارسال کوکی برای احراز هویت
+      },
+    });
+    const userData = await userResponse.json();
+    console.log(userData);
 
     if (!userResponse.ok) {
       return NextResponse.json(
@@ -85,8 +100,6 @@ export async function POST(req) {
         { status: 500 }
       );
     }
-
-    const userData = await userResponse.json();
 
     // تبدیل داده‌ها به فرمت مناسب
     const upload = parseFloat(userData.obj.up || 0);
