@@ -26,6 +26,7 @@ export default function Home() {
       if (response.ok) {
         setLoading(false);
         const data = await response.json();
+
         router.push(
           `/result?total=${data.total}&upload=${data.upload}&download=${
             data.download
